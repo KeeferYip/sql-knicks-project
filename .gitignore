@@ -1,0 +1,12 @@
+# Ignore raw datasets
+data/
+
+# Ignore compressed files
+*.zip
+
+# Ignore database files
+*.sqlite
+*.db
+
+# macOS system files
+.DS_Store

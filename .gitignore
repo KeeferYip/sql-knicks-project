@@ -10,3 +10,6 @@ data/
 
 # macOS system files
 .DS_Store
+
+# dbeaver files
+.dbeaver

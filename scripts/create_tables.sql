@@ -1,13 +1,17 @@
--- added a TEMPORARY drop table in case of error 
+-- Created staging tables for data import
+CREATE TABLE raw_teams (
+	teamid int,
+	teamCity varchar,
+	teamName varchar,
+	teamAbbrev varchar,
+	seasonFounded int,
+	seasonActiveTill int,
+	league varchar
+);
 
-DROP TABLE IF EXISTS player_stats CASCADE;
-DROP TABLE IF EXISTS team_stats CASCADE;
-DROP TABLE IF EXISTS players CASCADE;
-DROP TABLE IF EXISTS games CASCADE;
-DROP TABLE IF EXISTS teams CASCADE;
 
 
--- Created tables for analyses with respective keys
+-- Created normalized tables for analyses with respective keys
 CREATE TABLE teams(
 	team_id int PRIMARY KEY,
 	team_name varchar UNIQUE NOT NULL
@@ -76,7 +80,6 @@ CREATE TABLE team_stats (
 	FOREIGN KEY (game_id) REFERENCES games(game_id)
 	
 	);
-
 
 
 

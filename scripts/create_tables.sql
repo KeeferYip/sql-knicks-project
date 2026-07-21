@@ -20,6 +20,13 @@ CREATE TABLE raw_teams (
 );
 
 
+CREATE TABLE raw_team_stats (
+);
+
+
+CREATE TABLE raw_player_stats(
+);
+
 -- Created normalized tables for analyses with respective keys
 CREATE TABLE teams (
 	team_id int PRIMARY KEY,

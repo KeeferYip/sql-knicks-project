@@ -13,6 +13,9 @@ WHERE league = 'NBA' AND seasonactivetill = 2100 AND teamid > 10000;
 ALTER TABLE raw_player_info
 ALTER COLUMN "seriesGameNumber" TYPE varchar;
 
+ALTER TABLE raw_player_stats
+ALTER COLUMN "seriesgamenumber" TYPE varchar; 
+
 -- Picking out unique player and team info from raw 
 
 INSERT INTO players (player_id, player_name)
@@ -25,15 +28,20 @@ WHERE r."gameDateTimeEst" > '2025-10-01'
 
 
 -- populating player_teams with respective ids
+TRUNCATE player_teams;
+
 INSERT INTO player_teams (player_id, team_id)
 SELECT DISTINCT
-	r."personId",
-	t.team_id
-FROM raw_player_info AS r 
-JOIN teams AS t
-	ON CONCAT(r."playerteamCity", ' ', r."playerteamName") = t.team_name 
+    r."personId",
+    t.team_id
+FROM raw_player_info r
+JOIN teams t
+    ON CONCAT(r."playerteamCity", ' ', r."playerteamName") = t.team_name
 WHERE r."gameDateTimeEst" > '2025-10-01'
-  AND (r."gameType" NOT IN ('Preseason', 'All-Star Game') OR r."gameType" IS NULL);
+AND (
+    r."gameType" NOT IN ('Preseason', 'All-Star Game')
+    OR r."gameType" IS NULL
+);
 	
 	
 -- Filtering raw_games for NBA games only and re-assigning IDs
@@ -70,5 +78,4 @@ JOIN teams AS winner
 WHERE 
 	"gameDateTimeEst" > '2025-10-01'
 	AND ("gameType" NOT IN ('Preseason', 'All-Star Game') OR "gameType" IS NULL);
-	
-	
+

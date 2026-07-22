@@ -15,9 +15,11 @@ WHERE
 	league = 'NBA'
 	AND seasonactivetill = 2100
 	AND teamid > 10000;
+
 -- Updated column data type to prevent data import error
-ALTER TABLE raw_player_info
-ALTER COLUMN "seriesGameNumber" TYPE varchar;
+
+ALTER TABLE raw_player_stats
+ALTER COLUMN "seriesgamenumber" TYPE varchar;
 
 -- Picking out unique player and team info from raw 
 
@@ -27,36 +29,33 @@ INSERT
 	player_name)
 SELECT
 	DISTINCT
-    r."personId",
-	CONCAT(r."firstName", ' ', r."lastName")
+    r."personid",
+	CONCAT(r."firstname", ' ', r."lastname")
 FROM
-	raw_player_info r
+	raw_player_stats r
 WHERE
-	r."gameDateTimeEst" > '2025-10-01'
-	AND (r."gameType" NOT IN ('Preseason', 'All-Star Game')
-		OR r."gameType" IS NULL);
+	r."gamedatetimeest" > '2025-10-01'
+	AND (r."gametype" NOT IN ('Preseason', 'All-Star Game')
+		OR r."gametype" IS NULL);
 -- populating player_teams with respective ids
-TRUNCATE
-	player_teams;
-
 INSERT
 	INTO
 	player_teams (player_id,
 	team_id)
 SELECT
 	DISTINCT
-    r."personId",
+    r."personid",
 	t.team_id
 FROM
-	raw_player_info r
+	raw_player_stats r
 JOIN teams t
     ON
-	CONCAT(r."playerteamCity", ' ', r."playerteamName") = t.team_name
+	CONCAT(r."playerteamcity", ' ', r."playerteamname") = t.team_name
 WHERE
-	r."gameDateTimeEst" > '2025-10-01'
+	r."gamedatetimeest" > '2025-10-01'
 	AND (
-    r."gameType" NOT IN ('Preseason', 'All-Star Game')
-		OR r."gameType" IS NULL
+    r."gametype" NOT IN ('Preseason', 'All-Star Game')
+		OR r."gametype" IS NULL
 );
 -- Filtering raw_games for NBA games only and re-assigning IDs
 INSERT

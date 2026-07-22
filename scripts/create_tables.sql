@@ -44,7 +44,7 @@ CREATE TABLE players (
 -- need to make a player_teams table because players can be traded mid-season
 CREATE TABLE player_teams (
 	player_id int,
-	team_id int
+	team_id int,
 	
 	PRIMARY KEY (player_id, team_id),
 	FOREIGN KEY (player_id) REFERENCES players(player_id),

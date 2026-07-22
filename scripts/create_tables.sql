@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS player_teams CASCADE;
 DROP TABLE IF EXISTS players CASCADE;
 DROP TABLE IF EXISTS games CASCADE;
 DROP TABLE IF EXISTS teams CASCADE;
-DROP TABLE IF EXISTS raw_teams CASCADE;
 
 
 -- Created staging tables for data import

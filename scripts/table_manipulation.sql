@@ -96,3 +96,82 @@ WHERE
 		OR "gameType" IS NULL);
 
 
+-- Alter original player and team stats tables with updated variables of interest 
+ALTER TABLE player_stats 
+DROP COLUMN efficiency,
+ADD COLUMN fgs_made int,
+ADD COLUMN fgs_attempted int,
+ADD COLUMN three_pts_made int,
+ADD COLUMN three_pts_attempted int,
+ADD COLUMN fts_made int,
+ADD COLUMN fts_attempted int,
+ADD COLUMN usage_pct NUMERIC;
+
+ALTER TABLE team_stats 
+ADD COLUMN fgs_made int,
+ADD COLUMN fgs_attempted int,
+ADD COLUMN three_pts_made int,
+ADD COLUMN three_pts_attempted int,
+ADD COLUMN fts_made int,
+ADD COLUMN fts_attempted int;
+
+-- Updated games table to include game type
+ALTER TABLE games
+ADD COLUMN game_type varchar;
+
+UPDATE 
+	games g
+SET game_type = r."gameType"
+FROM rawgames r
+WHERE game_id = r."gameId";
+
+ALTER TABLE games
+ALTER COLUMN game_type SET NOT NULL;
+
+-- Populate player and team stats tables
+INSERT INTO player_stats (
+	player_id,
+	game_id, 
+	team_id,
+	minutes,
+	points,
+	rebounds,
+	assists,
+	steals,
+	blocks,
+	turnovers,
+	plus_minus,
+	fgs_made,
+	fgs_attempted,
+	three_pts_made,
+	three_pts_attempted,
+	fts_made,
+	fts_attempted,
+	usage_pct
+)
+
+SELECT 
+	r.personid,
+	r.gameid,
+	t.team_id,
+	r.numminutes,
+	r.points,
+	r.reboundstotal,
+	r.assists,
+	r.steals,
+	r.blocks,
+	r.turnovers,
+	r.plusminuspoints,
+	r.fieldgoalsmade,
+	r.fieldgoalsattempted,
+	r.threepointersmade,
+	r.threepointersattempted,
+	r.freethrowsmade,
+	r.freethrowsattempted,
+	r.usagepercentage
+FROM raw_player_stats AS r
+JOIN games AS g
+ON r.gameid = g.game_id
+JOIN teams AS t
+ON r.playerteamid = t.raw_team_id;
+

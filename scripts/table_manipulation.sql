@@ -128,7 +128,7 @@ WHERE game_id = r."gameId";
 ALTER TABLE games
 ALTER COLUMN game_type SET NOT NULL;
 
--- Populate player and team stats tables
+-- Populate player_stats table
 INSERT INTO player_stats (
 	player_id,
 	game_id, 
@@ -175,3 +175,41 @@ ON r.gameid = g.game_id
 JOIN teams AS t
 ON r.playerteamid = t.raw_team_id;
 
+-- Populating team_stats
+INSERT INTO team_stats(
+	team_id,
+	game_id,
+	total_points,
+	fg_pct,
+	rebounds,
+	assists,
+	steals,
+	blocks,
+	fgs_made,
+	fgs_attempted,
+	three_pts_made,
+	three_pts_attempted,
+	fts_made,
+	fts_attempted
+)
+
+SELECT 
+	t.team_id,
+	r.gameid,
+	r.teamscore,
+	r.fieldgoalspercentage,
+	r.reboundstotal,
+	r.assists,
+	r.steals,
+	r.blocks,
+	r.fieldgoalsmade,
+	r.fieldgoalsattempted,
+	r.threepointersmade,
+	r.threepointersattempted,
+	r.freethrowsmade,
+	r.freethrowsattempted
+FROM raw_team_stats AS r
+JOIN games AS g
+ON r.gameid = g.game_id
+JOIN teams AS t
+ON r.teamid = t.raw_team_id;

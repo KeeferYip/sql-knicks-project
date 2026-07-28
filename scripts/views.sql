@@ -1,5 +1,5 @@
-DROP VIEW player_game_total 
-DROP VIEW team_game_total
+DROP VIEW IF EXISTS player_game_total;
+DROP VIEW IF EXISTS team_game_total;
 
 -- Create a view for player game total stats
 CREATE VIEW player_game_total AS
@@ -12,11 +12,7 @@ SELECT
 	g.game_type,
 -- Allows us to filter directly for specific player and opposing teams
 	CASE 
-		WHEN ps.team_id = g.home_team_id THEN g.away_team_id
-	ELSE g.home_team_id
-END AS opponent_team_id,
-	CASE 
-		WHEN ps.team_id = g.home_team_id THEN away_team_name
+		WHEN ps.team_id = g.home_team_id THEN away.team_name
 	ELSE home.team_name
 END AS opponent_team_name,
 	ps.minutes,

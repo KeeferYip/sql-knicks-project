@@ -143,3 +143,20 @@ SELECT
 	ROUND(CAST(player_pra AS decimal) / team_pra, 2) AS pra_share
 FROM pra_share
 ORDER BY pra_share DESC;
+
+-- Exploring usage pct for any identifiable trends
+SELECT 
+	player_name,
+	team_name,
+	AVG(usage_pct) AS avg_usage_pct
+FROM
+	player_game_total
+WHERE 
+	game_type = 'Playoffs'
+AND 
+	(team_name IN ('New York Knicks', 'San Antonio Spurs'))
+AND
+	(opponent_team_name IN ('New York Knicks', 'San Antonio Spurs'))
+GROUP BY player_name, team_name
+ORDER BY avg_usage_pct DESC;
+

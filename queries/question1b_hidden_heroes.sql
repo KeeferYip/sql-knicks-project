@@ -4,7 +4,6 @@
 
 DROP VIEW IF EXISTS bench;
 
--- 
 CREATE VIEW bench AS (
 SELECT 
 	player_name,
@@ -19,7 +18,8 @@ SELECT
 	AVG(plus_minus) AS avg_plus_minus,
 	SUM(points) AS total_points,
 	SUM(rebounds) AS total_rebounds,
-	SUM(assists) AS total_assists
+	SUM(assists) AS total_assists,
+	SUM(turnovers) AS total_turnovers
 FROM 
 	player_game_total
 WHERE
@@ -45,3 +45,27 @@ WHERE
 ORDER BY 
 	pts_per_min DESC;
 
+-- Show plus minus stats for all bench players
+SELECT 
+	player_name,
+	team_id,
+	minutes_rank,
+	min_plus_minus,
+	max_plus_minus,
+	avg_plus_minus
+FROM 
+	bench 
+WHERE 
+	minutes_rank > 5;
+
+-- Create an assist plus minus with turnovers to measure how efficient one was with the ball 
+SELECT
+	player_name,
+	team_id,
+	minutes_rank,
+	total_assists,
+	total_turnovers,
+	total_assists - total_turnovers AS ast_plus_minus
+FROM 
+	bench
+WHERE minutes_rank > 5;

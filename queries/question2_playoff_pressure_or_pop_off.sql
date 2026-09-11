@@ -155,7 +155,7 @@ FROM
 );
 
 
--- identify players who stood out (good and bad)
+-- identify players who stood out (good and bad) (mainly EDA)
 SELECT
 	player_name,
 	team_id,
@@ -172,9 +172,9 @@ ORDER BY
 	team_id;
 
 
--- Notable performances: real Finals minutes (>= 8 mpg, filters garbage time) and at least
--- one stat swinging >= 20% from the regular-season baseline (bigger than the +/-10% bar
--- used for the Improved/Declined/Same Role labels above)
+/* Notable performances: (>= 8 mpg) and at least one stat swinging >= 20% from the regular-season baseline (bigger than the +/-10% bar
+used for the Improved/Declined/Same Role labels above)
+*/
 SELECT
 	player_name,
 	team_id,
@@ -204,9 +204,9 @@ ORDER BY
 	GREATEST(ABS(pct_min_change), ABS(pct_point_change), ABS(pct_rebound_change), ABS(pct_assist_change)) DESC;
 
 
--- Final verdict: within the notable-performance pool above, rank by net production swing
--- (points + rebounds + assists % change combined) to call out who clearly popped off
--- vs. who cracked under playoff pressure
+/* among the players with the biggest changes, rank by net production swing
+(points + rebounds + assists % change combined) and assign verdict (Pop Off or Pressure)
+*/
 SELECT
 	player_name,
 	team_id,

@@ -162,78 +162,63 @@ per-game averages**, then bucketed with CASE logic —
 - **Scoring / Rebound / Assist**: ≥ +10% = *Improved*, ≤ −10% = *Declined*, else *Consistent*
 - **Shots** (FG attempts): ≥ +10% = *More Aggressive*, ≤ −10% = *Less Aggressive*, else *Consistent*
 
-### Knicks — every player with a Finals appearance, by minutes change
+The full label table covers all 30 players, but most of it is noise — a five-game series makes
+every role player's per-game average swing. The table below filters to players who logged real
+Finals minutes (`playoff_minutes >= 8`, cutting garbage time) **and** had at least one stat move
+by 20% or more — double the ±10% bar used for the labels above — to surface the swings that
+actually mean something.
 
-| Player | Min % | Pts % | Reb % | Ast % | FGA % | Role | Scoring | Rebound | Assist | Shots |
-|---|--:|--:|--:|--:|--:|---|---|---|---|---|
-| Pacome Dadiet | +27 | +73 | +7 | +4 | +38 | Expanded | Improved | Consistent | Consistent | More Aggressive |
-| Josh Hart | +8 | -13 | +22 | -5 | +2 | Same | Declined | Improved | Consistent | Consistent |
-| Jalen Brunson | +6 | +9 | -5 | -11 | +9 | Same | Consistent | Consistent | Declined | Consistent |
-| OG Anunoby | +4 | +21 | +20 | -24 | -3 | Same | Improved | Improved | Declined | Consistent |
-| Karl-Anthony Towns | -1 | -21 | -11 | +64 | -28 | Same | Declined | Declined | Improved | Less Aggressive |
-| Mikal Bridges | -2 | -6 | -16 | -26 | -16 | Same | Consistent | Declined | Declined | Less Aggressive |
-| Ariel Hukporti | -16 | -22 | +9 | -44 | -26 | Reduced | Declined | Consistent | Declined | Less Aggressive |
-| Mohamed Diawara | -21 | -67 | +10 | +30 | -30 | Reduced | Declined | Improved | Improved | Less Aggressive |
-| Mitchell Robinson | -28 | -15 | -37 | -55 | -16 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Landry Shamet | -28 | -36 | -39 | -48 | -37 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Miles McBride | -33 | -53 | -50 | -53 | -44 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Jordan Clarkson | -38 | -43 | -2 | -54 | -41 | Reduced | Declined | Consistent | Declined | Less Aggressive |
-| Tyler Kolek | -42 | -21 | -53 | -45 | -22 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Jose Alvarado | -44 | -37 | -32 | -69 | -38 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Jeremy Sochan | -52 | -9 | -71 | -67 | -40 | Reduced | Consistent | Declined | Declined | Less Aggressive |
+### Notable performances — real minutes, ≥20% swing in at least one stat
 
-### Spurs — every player with a Finals appearance, by minutes change
-
-| Player | Min % | Pts % | Reb % | Ast % | FGA % | Role | Scoring | Rebound | Assist | Shots |
-|---|--:|--:|--:|--:|--:|---|---|---|---|---|
-| Dylan Harper | +19 | +20 | +64 | -30 | +7 | Expanded | Improved | Improved | Declined | Consistent |
-| Victor Wembanyama | +18 | -5 | -6 | -14 | -2 | Expanded | Consistent | Consistent | Declined | Consistent |
-| Devin Vassell | +15 | -7 | +32 | +8 | -6 | Expanded | Consistent | Improved | Consistent | Consistent |
-| Julian Champagnie | +12 | +1 | -1 | +1 | +1 | Expanded | Consistent | Consistent | Consistent | Consistent |
-| Stephon Castle | +11 | +9 | -5 | -17 | +7 | Expanded | Consistent | Consistent | Declined | Consistent |
-| De'Aaron Fox | +9 | -16 | 0 | -4 | -1 | Same | Declined | Consistent | Consistent | Consistent |
-| Keldon Johnson | -23 | -41 | -38 | -36 | -28 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Carter Bryant | -25 | -37 | -31 | +3 | -46 | Reduced | Declined | Declined | Consistent | Less Aggressive |
-| Jordan McLaughlin | -26 | -6 | +10 | +16 | -39 | Reduced | Consistent | Improved | Improved | Less Aggressive |
-| Luke Kornet | -38 | -44 | -36 | -62 | -37 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Lindy Waters III | -46 | -30 | -8 | -6 | -34 | Reduced | Declined | Consistent | Consistent | Less Aggressive |
-| Bismack Biyombo | -50 | -28 | -68 | -100 | +30 | Reduced | Declined | Declined | Declined | More Aggressive |
-| Kelly Olynyk | -54 | -12 | -57 | -71 | -27 | Reduced | Declined | Declined | Declined | Less Aggressive |
-| Mason Plumlee | -59 | -20 | -69 | -50 | +50 | Reduced | Declined | Declined | Declined | More Aggressive |
-| Harrison Barnes | -64 | -77 | -53 | -87 | -74 | Reduced | Declined | Declined | Declined | Less Aggressive |
+| Player | Team | Finals MPG | Min % | Pts % | Reb % | Ast % | FGA % |
+|---|---|--:|--:|--:|--:|--:|--:|
+| OG Anunoby | NYK | 34.4 | +4 | +21 | +20 | -24 | -3 |
+| Josh Hart | NYK | 32.3 | +8 | -13 | +22 | -5 | +2 |
+| Karl-Anthony Towns | NYK | 30.4 | -1 | -21 | -11 | +64 | -28 |
+| Mikal Bridges | NYK | 32.0 | -2 | -6 | -16 | -26 | -16 |
+| Miles McBride | NYK | 17.6 | -33 | -53 | -50 | -53 | -44 |
+| Landry Shamet | NYK | 16.3 | -28 | -36 | -39 | -48 | -37 |
+| Mitchell Robinson | NYK | 13.9 | -28 | -15 | -37 | -55 | -16 |
+| Jordan Clarkson | NYK | 10.8 | -38 | -43 | -2 | -54 | -41 |
+| Jose Alvarado | NYK | 9.5 | -44 | -37 | -32 | -69 | -38 |
+| Dylan Harper | SAS | 26.8 | +19 | +20 | +64 | -30 | +7 |
+| Devin Vassell | SAS | 34.8 | +15 | -7 | +32 | +8 | -6 |
+| Keldon Johnson | SAS | 17.8 | -23 | -41 | -38 | -36 | -28 |
+| Luke Kornet | SAS | 12.9 | -38 | -44 | -36 | -62 | -37 |
+| Carter Bryant | SAS | 8.5 | -25 | -37 | -31 | +3 | -46 |
+| Harrison Barnes | SAS | 9.1 | -64 | -77 | -53 | -87 | -74 |
 
 ### Rose to the occasion
 
 - **Dylan Harper (SAS)** — bigger role *and* better output: +19% minutes, +20% points, +64%
-  rebounds, and a team-best +9 assist-to-turnover margin. The only Spur whose Finals averages
-  beat his regular-season baseline across multiple categories.
+  rebounds. The only Spur in this table whose Finals averages beat his regular-season baseline
+  across multiple categories.
 - **OG Anunoby (NYK)** — same minutes, +21% points and +20% rebounds; the Knicks starter whose
   per-game production rose the most.
 - **Karl-Anthony Towns (NYK)** — not more scoring (−21% points, −28% FG attempts) but a shifted
   role: +64% assists. A change in how he was used, not a drop-off.
 - **Josh Hart (NYK)** — +22% rebounds on flat minutes.
 
-*(Pacome Dadiet's +73% points is in the table but comes on garbage-time minutes — small
-denominator, not a signal.)*
-
 ### Fell short of their regular-season form
 
-- **San Antonio's veteran frontcourt** — Barnes (−64% minutes, −77% points), Olynyk, Plumlee
-  and Biyombo all lost 50%+ of their minutes. This is largely a rotation decision: the Spurs
-  shortened their bench and leaned younger for the Finals.
-- **De'Aaron Fox (SAS)** — kept the same role (−9% minutes, essentially unchanged FG attempts)
-  but scored 16% less per game.
-- **Victor Wembanyama (SAS)** — absorbed +18% more minutes without more production (−5% points,
-  −6% rebounds).
-- **Mikal Bridges (NYK)** — same minutes, down across the board: −6% points, −16% rebounds,
+- **The Knicks bench collapsed almost across the board** — McBride, Shamet, Robinson, Clarkson
+  and Alvarado all lost 28–44% of their minutes, and every one of them declined in points,
+  rebounds, and assists.
+- **Harrison Barnes (SAS)** — the sharpest drop of anyone in the series: −64% minutes, −77%
+  points, −53% rebounds, −87% assists.
+- **Keldon Johnson, Luke Kornet, Carter Bryant (SAS)** — the rest of San Antonio's bench also
+  declined heavily as the Spurs shortened their rotation for the Finals.
+- **Mikal Bridges (NYK)** — same minutes, but down across the board: −6% points, −16% rebounds,
   −26% assists, −16% FG attempts.
 
 ### Question 2 — what the numbers point to
 
-The Knicks mostly held or improved inside stable roles — five of their top six were *Same Role*
-on minutes, with Anunoby up, Towns re-cast as a passer, and only Bridges slipping. The Spurs'
-side is defined by change: Harper is the one clear riser, Wembanyama took on more without more
-output, Fox regressed at unchanged usage, and the veteran bench dropped out of the rotation.
+Among players who saw real minutes and moved by 20% or more in something, the Knicks' story is
+their bench: nearly every reserve outside the starting five declined across the board, while the
+starters who did show up big (Anunoby, Towns, Hart) held or grew their role rather than getting
+more run to compensate. The Spurs' story is Harper rising into an expanded role and everyone
+else in this table — from the bench down to Harrison Barnes — losing minutes and production
+together as San Antonio shortened its rotation for the Finals.
 
 ---
 
@@ -249,12 +234,13 @@ output, Fox regressed at unchanged usage, and the veteran bench dropped out of t
   a strength-of-opponent-matched subset.
 - **`usage_pct`.** The imported values sit on an unusual 0–1 scale; the column is excluded from
   the write-up pending a check against the source CSV.
+- **The 20%-swing filter can hide "quiet" stories.** A player who kept the same role but produced
+  modestly less (e.g. someone a few points off pace at unchanged minutes) won't clear the bar and
+  is left out of Q2's table entirely, even if a human analyst would still find it notable.
 
 ## Possible extensions
 
 - Refactor the repeated `game_type = 'Playoffs' AND home/away IN (20, 27)` filter into a
   `finals_player_games` view.
-- Add a minutes floor to Q2 (e.g. ≥ 8 Finals mpg) so rotation players aren't buried among
-  garbage-time lines.
 - Per-game trend: did the Knicks' scoring concentration grow as the series went on?
 - Visualizations (Tableau).

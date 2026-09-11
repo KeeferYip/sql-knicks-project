@@ -164,22 +164,21 @@ SELECT
 	rebound_label,
 	assist_label,
 	shots_label
-FROM 
+FROM
 	labels
-WHERE 
+WHERE
 	role_label = 'Same Role'
-ORDER BY 
+ORDER BY
 	team_id;
-/* ^^^^ SAVE FOR LATER ^^^^^:
- * The above query shows that the Knicks starting 5 all had the same role,
- * whereas the Spurs only had 1 player with the same role across the series
-*/
 
 
--- Full breakdown: every player with a Finals appearance, grouped by team, ordered by minutes change
+-- Notable performances: real Finals minutes (>= 8 mpg, filters garbage time) and at least
+-- one stat swinging >= 20% from the regular-season baseline (bigger than the +/-10% bar
+-- used for the Improved/Declined/Same Role labels above)
 SELECT
 	player_name,
 	team_id,
+	ROUND(playoff_minutes, 1) AS finals_mpg,
 	ROUND(pct_min_change) AS pct_min_change,
 	ROUND(pct_point_change) AS pct_point_change,
 	ROUND(pct_rebound_change) AS pct_rebound_change,
@@ -192,6 +191,14 @@ SELECT
 	shots_label
 FROM
 	labels
+WHERE
+	playoff_minutes >= 8
+	AND (
+		ABS(pct_min_change) >= 20
+		OR ABS(pct_point_change) >= 20
+		OR ABS(pct_rebound_change) >= 20
+		OR ABS(pct_assist_change) >= 20
+	)
 ORDER BY
 	team_id,
-	pct_min_change DESC;
+	GREATEST(ABS(pct_min_change), ABS(pct_point_change), ABS(pct_rebound_change), ABS(pct_assist_change)) DESC;

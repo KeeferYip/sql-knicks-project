@@ -211,6 +211,15 @@ actually mean something.
 - **Mikal Bridges (NYK)** — same minutes, but down across the board: −6% points, −16% rebounds,
   −26% assists, −16% FG attempts.
 
+### The verdict: Playoff Pop Off vs. Playoff Pressure
+
+Ranking the same notable-performance pool by net swing in points + rebounds + assists puts a
+number on who rose and who cracked:
+
+**Playoff Pop Off** — Dylan Harper (+54), Karl-Anthony Towns (+33), Devin Vassell (+33)
+
+**Playoff Pressure** — Harrison Barnes (−217), Miles McBride (−157), Luke Kornet (−142)
+
 ### Question 2 — what the numbers point to
 
 Among players who saw real minutes and moved by 20% or more in something, the Knicks' story is

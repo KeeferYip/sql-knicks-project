@@ -202,3 +202,28 @@ WHERE
 ORDER BY
 	team_id,
 	GREATEST(ABS(pct_min_change), ABS(pct_point_change), ABS(pct_rebound_change), ABS(pct_assist_change)) DESC;
+
+
+-- Final verdict: within the notable-performance pool above, rank by net production swing
+-- (points + rebounds + assists % change combined) to call out who clearly popped off
+-- vs. who cracked under playoff pressure
+SELECT
+	player_name,
+	team_id,
+	ROUND(pct_point_change + pct_rebound_change + pct_assist_change) AS net_production_swing,
+	CASE
+		WHEN pct_point_change + pct_rebound_change + pct_assist_change > 0 THEN 'Playoff Pop Off'
+		ELSE 'Playoff Pressure'
+	END AS verdict
+FROM
+	labels
+WHERE
+	playoff_minutes >= 8
+	AND (
+		ABS(pct_min_change) >= 20
+		OR ABS(pct_point_change) >= 20
+		OR ABS(pct_rebound_change) >= 20
+		OR ABS(pct_assist_change) >= 20
+	)
+ORDER BY
+	net_production_swing DESC;

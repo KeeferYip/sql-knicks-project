@@ -30,8 +30,7 @@ used (not committed — see [`.gitignore`](.gitignore)):
 ```
 sql-knicks-project/
 ├── scripts/
-│   ├── create_tables.sql        # staging + normalized schema
-│   ├── import_data.sql          # notes on loading the raw CSVs
+│   ├── create_tables.sql        # normalized schema (+ one staging table, see below)
 │   ├── table_manipulation.sql   # staging -> normalized transforms, column additions
 │   └── views.sql                # player_game_total, team_game_total helper views
 ├── queries/
@@ -43,11 +42,16 @@ sql-knicks-project/
 
 ## How the database is built
 
-1. **Schema** — `create_tables.sql` creates staging tables (`raw_teams`, `raw_team_stats`,
-   `raw_player_stats`, `rawgames`) and the normalized model: `teams`, `players`, `player_teams`
-   (players can change teams mid-season), `games`, `player_stats`, `team_stats`.
-2. **Load** — the four raw CSVs are imported into the staging tables (via the DBeaver import
-   wizard / `\copy`).
+1. **Schema** — `create_tables.sql` creates the `raw_teams` staging table and the normalized
+   model: `teams`, `players`, `player_teams` (players can change teams mid-season), `games`,
+   `player_stats`, `team_stats`.
+2. **Load** — the four raw CSVs are imported into staging tables via DBeaver's import wizard,
+   which also created `raw_team_stats`, `raw_player_stats`, and `rawgames` directly from the CSV
+   headers (100+ columns each, some with inconsistent formatting — e.g. minutes as `"6:08"` in
+   some rows). That load step isn't captured as a script: reproducing it with a bare `\copy`
+   hits type errors DBeaver's wizard papers over. Since the goal here is the SQL analysis, not a
+   fully automated pipeline, the staging load is left as a manual, documented step rather than
+   something this repo tries to script end-to-end.
 3. **Transform** — `table_manipulation.sql` filters to current NBA teams and the 2025–26 season,
    re-assigns clean surrogate keys, adds the box-score columns of interest
    (`fgs_made`, `three_pts_attempted`, `usage_pct`, …), and populates the normalized tables.

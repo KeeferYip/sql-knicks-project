@@ -1,12 +1,3 @@
--- TEMPORARY drop table 
-DROP TABLE IF EXISTS player_stats CASCADE;
-DROP TABLE IF EXISTS team_stats CASCADE;
-DROP TABLE IF EXISTS player_teams CASCADE;
-DROP TABLE IF EXISTS players CASCADE;
-DROP TABLE IF EXISTS games CASCADE;
-DROP TABLE IF EXISTS teams CASCADE;
-
-
 -- Created staging tables for data import
 CREATE TABLE raw_teams (
 	teamid int,

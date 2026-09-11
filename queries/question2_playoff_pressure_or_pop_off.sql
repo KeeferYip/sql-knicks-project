@@ -170,10 +170,28 @@ WHERE
 	role_label = 'Same Role'
 ORDER BY 
 	team_id;
-/* ^^^^ SAVE FOR LATER ^^^^^: 
- * The above query shows that the Knicks starting 5 all had the same role, 
+/* ^^^^ SAVE FOR LATER ^^^^^:
+ * The above query shows that the Knicks starting 5 all had the same role,
  * whereas the Spurs only had 1 player with the same role across the series
 */
 
 
--- Continue doing EDA on different variables from temp table 'labels' to find patterns
+-- Full breakdown: every player with a Finals appearance, grouped by team, ordered by minutes change
+SELECT
+	player_name,
+	team_id,
+	ROUND(pct_min_change) AS pct_min_change,
+	ROUND(pct_point_change) AS pct_point_change,
+	ROUND(pct_rebound_change) AS pct_rebound_change,
+	ROUND(pct_assist_change) AS pct_assist_change,
+	ROUND(pct_fg_att_change) AS pct_fg_att_change,
+	role_label,
+	scoring_label,
+	rebound_label,
+	assist_label,
+	shots_label
+FROM
+	labels
+ORDER BY
+	team_id,
+	pct_min_change DESC;

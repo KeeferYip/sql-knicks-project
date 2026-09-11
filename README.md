@@ -70,7 +70,7 @@ Final scores: NYK 105–95, 105–104, 111–115, 107–106, 94–90.
 Two angles: how concentrated each team's production was (**1a**), and what the bench added
 (**1b**).
 
-## 1a — Star concentration vs. balance
+## 1a — Star vs Depth
 
 `queries/question1_star_vs_depth.sql` builds the `pt_share` view: each player's share of their
 team's Finals scoring, plus a PRA (points + rebounds + assists) share.
@@ -156,7 +156,7 @@ steadier bench" is the pattern that separated them here.
 
 ---
 
-# Question 2 — Who rose, and who fell short of their regular-season form?
+# Question 2 — Playoff Pop-Off or Playoff Pressure?
 
 `queries/question2_playoff_pressure_or_pop_off.sql` builds a `labels` table: for every player,
 the percentage change from their **regular-season per-game averages** to their **Finals

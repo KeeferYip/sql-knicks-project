@@ -233,6 +233,9 @@ more run to compensate. The Spurs' story is Harper rising into an expanded role 
 else in this table — from the bench down to Harrison Barnes — losing minutes and production
 together as San Antonio shortened its rotation for the Finals.
 
+Structurally, the Knicks' rotation barely moved — all five starters logged *Same Role* minutes —
+while De'Aaron Fox was the only Spur who could say the same.
+
 ---
 
 ## Limitations

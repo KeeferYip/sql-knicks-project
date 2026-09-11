@@ -155,7 +155,8 @@ FROM
 );
 
 
--- identify players who stood out (good and bad) (mainly EDA)
+-- Identify players who stood out (good and bad) (mainly EDA)
+-- *interesting note, all Knicks starters kept a consistent role, while only 1 player (De'Aaron Fox) on the Spurs did
 SELECT
 	player_name,
 	team_id,

@@ -1,7 +1,9 @@
 # NBA Finals 2026: Knicks vs. Spurs — a SQL analysis
 
 The New York Knicks beat the San Antonio Spurs **4–1** in the 2025–26 NBA Finals
-(June 3–13 2026). This project takes the raw box-score data for that series, models it into a
+(June 3–13 2026). 
+
+This project takes the raw box-score data for that series, models it into a
 normalized PostgreSQL schema, and uses SQL to work through two questions:
 
 1. **Why did the Knicks win?** — was it their top-heavy star core, or their depth?

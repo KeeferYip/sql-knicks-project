@@ -1,15 +1,17 @@
 # NBA Finals 2026: New York Knicks vs. San Antonio Spurs — a SQL analysis
 
 The New York Knicks beat the San Antonio Spurs **4–1** in the 2025–26 NBA Finals
-(June 3–13 2026). 
+(June 3–13, 2026). 
 
 This project takes the raw box-score data for that series, models it into a
 normalized PostgreSQL schema, and uses SQL to uncover the reasons as to how the Knicks edged out the Spurs.
 
-Two main questions were asked:
+A few main questions were asked:
 
-1. **Star vs Depth?** — Did the two teams rely on superstar power, or a balanced and deep roster?
-1a. **Hidden Heroes?** — How did the bench play a role on both teams?
+1a. **Star vs Depth?** — Did the two teams rely on superstar power, or a balanced and deep roster?
+
+1b. **Hidden Heroes?** — How did the bench play a role on both teams?
+
 2. **Playoff Pop-Off or Playoff Pressure?** — How did players perform in the playoffs compared to their regular season averages?
 
 Everything below comes from queries in [`queries/`](queries/); the numbers are query output,
@@ -72,7 +74,7 @@ Final scores: NYK 105–95, 105–104, 111–115, 107–106, 94–90.
 
 # Question 1 — Why did the Knicks win?
 
-Two angles: how concentrated each team's production was (**1a**), and what the bench added
+Two angles: how concentrated each team's production was (**1a**), and the role that both teams' benches played
 (**1b**).
 
 ## 1a — Star vs Depth

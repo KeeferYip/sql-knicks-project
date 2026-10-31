@@ -8,9 +8,10 @@ normalized PostgreSQL schema, and uses SQL to uncover the reasons as to how the 
 
 A few main questions were asked:
 
-1a. **Star vs Depth?** — Did the two teams rely on superstar power, or a balanced and deep roster?
+1.
+a. **Star vs Depth?** — Did the two teams rely on superstar power, or a balanced and deep roster?
 
-1b. **Hidden Heroes?** — How did the bench play a role on both teams?
+b. **Hidden Heroes?** — How did the bench play a role on both teams?
 
 2. **Playoff Pop-Off or Playoff Pressure?** — How did players perform in the playoffs compared to their regular season averages?
 

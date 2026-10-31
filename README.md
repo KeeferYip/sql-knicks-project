@@ -105,12 +105,15 @@ team's Finals scoring, plus a PRA (points + rebounds + assists) share.
 | NYK | **0.63** | 0.24 → 0.16 → 0.15 |
 | SAS | 0.57 | 0.24 → 0.16 → 0.14 |
 
-**What the data shows:** the Knicks' production was the *more* concentrated of the two.
-Brunson alone took 31% of their Finals scoring, and their top three combined for 63% of points
+**What the data shows:** the Knicks' production was the *more* concentrated of the two, albeit not by much.
+Brunson alone comprised 31% of their Finals scoring, and their top three combined for 63% of points
 versus 57% for San Antonio. The Spurs' scoring curve is flatter — five players between 13% and
 25% — and their PRA contribution stays meaningful roughly six players deep, where the Knicks'
 tails off after three. In this series the more top-heavy team won; with a single five-game
 sample that's an observation, not a causal claim.
+
+Admittedly, this isn't what I would have personally expected, 
+since most fans might agree that deeper teams are often regarded to be stronger.
 
 ## 1b — Hidden heroes: bench contribution
 
@@ -146,12 +149,17 @@ sample that's an observation, not a causal claim.
 | SAS | Keldon Johnson | 0.29 | 3 | 3 | 0 |
 | SAS | Luke Kornet | 0.07 | 2 | 1 | +1 |
 
+Essentially, I wanted to break down which benches were **more valuable** with the time they had. Especially in high-stakes games,
+every minute counts, and coaches want to ensure that the players they have out there are reliable.
+
 **What the data shows:** Harper aside (he played starter-level minutes and only lands in this
 bucket because Wembanyama, Castle, Fox, Vassell and Champagnie logged more), the Knicks' reserves
 were at worst break-even — Alvarado, Clarkson and Hukporti all finished with positive plus/minus,
 and Alvarado, Shamet and McBride each had a clean assist-to-turnover margin. San Antonio's bench,
-outside Keldon Johnson, was net-negative. Note that plus/minus over five games and small minute
-totals is noisy; the useful read is the direction, not the exact figures.
+outside Keldon Johnson, was net-negative. 
+
+*Note that plus/minus over five games and small minute
+totals are noisy; the useful read is the direction, not the exact figures.*
 
 ## Question 1 — what the numbers point to
 
@@ -164,6 +172,13 @@ steadier bench" is the pattern that separated them here.
 ---
 
 # Question 2 — Playoff Pop-Off or Playoff Pressure?
+
+This question was of interest to me partially because I was curious how the teams fared in terms of 
+experience due to differences in age. 
+
+For context, the Knicks’ championship rotation was about **4.4 years older** than the Spurs’: **28.8 to 24.4**.
+Since the Spurs were vastly younger, I had hypothesized that their players would perform worse in the finals as opposed
+to the regular season, due to nerves or other external factors.
 
 `queries/question2_playoff_pressure_or_pop_off.sql` builds a `labels` table: for every player,
 the percentage change from their **regular-season per-game averages** to their **Finals
@@ -236,12 +251,17 @@ number on who rose and who cracked:
 Among players who saw real minutes and moved by 20% or more in something, the Knicks' story is
 their bench: nearly every reserve outside the starting five declined across the board, while the
 starters who did show up big (Anunoby, Towns, Hart) held or grew their role rather than getting
-more run to compensate. The Spurs' story is Harper rising into an expanded role and everyone
+more run to compensate. 
+However, this could also have just been due to the fact that the team was more trusting in the starters
+and wanted to maximize their opportunities.
+
+The Spurs' story is Harper rising into an expanded role and everyone
 else in this table — from the bench down to Harrison Barnes — losing minutes and production
 together as San Antonio shortened its rotation for the Finals.
 
 Structurally, the Knicks' rotation barely moved — all five starters logged *Same Role* minutes —
-while De'Aaron Fox was the only Spur who could say the same.
+while De'Aaron Fox was the only Spur who could say the same. Interestingly enough, he was the 
+oldest one in the rotation and had the most NBA experience.
 
 ---
 
@@ -253,17 +273,11 @@ while De'Aaron Fox was the only Spur who could say the same.
   reserve bucket.
 - **Reduced role ≠ underperformance.** A player losing minutes (e.g. the Spurs' bigs) reflects a
   coaching decision as much as individual play.
-- **Regular-season baseline.** Q2 compares against *all* of a player's regular-season games, not
-  a strength-of-opponent-matched subset.
-- **`usage_pct`.** The imported values sit on an unusual 0–1 scale; the column is excluded from
-  the write-up pending a check against the source CSV.
 - **The 20%-swing filter can hide "quiet" stories.** A player who kept the same role but produced
   modestly less (e.g. someone a few points off pace at unchanged minutes) won't clear the bar and
-  is left out of Q2's table entirely, even if a human analyst would still find it notable.
+  is left out of Q2's table entirely, even if an analyst would still find it notable.
 
 ## Possible extensions
 
-- Refactor the repeated `game_type = 'Playoffs' AND home/away IN (20, 27)` filter into a
-  `finals_player_games` view.
-- Per-game trend: did the Knicks' scoring concentration grow as the series went on?
+- Identify trends in all of the Knicks' wins throughout the season — what stands out?
 - Visualizations (Tableau).

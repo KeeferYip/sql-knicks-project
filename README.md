@@ -265,6 +265,13 @@ oldest one in the rotation and had the most NBA experience.
 
 ---
 
+
+# Conclusion
+Overall, this project was simply conducted to experiment with SQL and explore my personal interest in sports.
+I posed a handful of questions that I thought would be unique and entertaining to explore, but in doing so, 
+realized that the story is much deeper than it seems.
+
+
 ## Limitations
 
 - **One five-game series.** No significance or effect-size testing; single-series percentage
